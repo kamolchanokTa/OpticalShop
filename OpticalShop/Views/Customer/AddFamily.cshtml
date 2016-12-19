@@ -1,0 +1,56 @@
+﻿
+@model OpticalShop.Models.Customer.Family
+@{
+    Layout = "~/Views/Shared/Root.cshtml";
+}
+
+<h2><a href="@Url.Action("Evaluation", "Manager")" data-hint="Go back to previous page" data-hint-position="right"><i class="arrow-left mif-3x fg-blue"></i></a>  Family Profile</h2>
+<hr class="thin bg-grayLighter">
+
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("AddFamily", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td style="width:150px">
+                @Html.LabelFor(model => Model.FamilyName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.FamilyName, new { style = "width:300px;" })
+                </div>
+                @Html.ValidationMessageFor(model => Model.FamilyName)
+            </td>
+        </tr>
+        <tr>
+            <td style="width:150px">
+                @Html.LabelFor(model => Model.Address)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Address, new { style = "width:300px;" })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:150px">
+                @Html.LabelFor(model => Model.Tel)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Tel, new { style = "width:300px;" })
+                </div>
+                @Html.ValidationMessageFor(model => Model.Tel)
+            </td>
+        </tr>
+        
+    </table>
+    <p style="margin-top: 10px;">
+        <input class="button large primary" type="submit" value="Update" />
+    </p>
+}
+<script type="text/javascript">
+
+
+</script>
+

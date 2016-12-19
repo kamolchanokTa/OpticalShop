@@ -1,0 +1,117 @@
+﻿
+@model OpticalShop.Models.Bill.BillModel
+@{
+    Layout = "~/Views/Shared/RootCustome.cshtml";
+    var successMessages = new List<string>();
+    if (TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+}
+<hr class="thin bg-grayLighter">
+
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("AddBill", "Bill", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        @Html.HiddenFor(model => Model.Id)
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => model.BillName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.BillName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.SelectedFamilyName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => Model.SelectedFamilyName, Model.FamiliesName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.OrderDate)
+            </td>
+            <td>
+                <div class="input-control text" data-role="datepicker">
+                    @Html.TextBoxFor(model => model.OrderDate)
+                    <button class="button"><span class="mif-calendar"></span></button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.TotalPrice)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.TotalPrice)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Comment)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextAreaFor(model => model.Comment)
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="width:100px">
+                @Html.LabelFor(model => Model.BillOrders)
+               <div for="Process" class="ink-button green btnBillOrder" data-billId="@Model.Id" data-familyName="@Model.SelectedFamilyName"><i class="btnAddBillOrder icon-plus on-left" style="cursor:pointer;" data-billId="@Model.Id" data-familyName="@Model.SelectedFamilyName"><span class="icon-box-add"></span></i> Add BillOrder here</div>
+            </td>
+            <td>
+                <div class="input-control text size2 block" id="BillOrderDisplay">
+                    @Html.Action("BillOrderDisplay", "Bill", new
+               {
+                   BillId = Model.Id
+               })
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    <p style="margin-top: 10px;">
+        <input class="button large primary" type="submit" value="Update" />
+    </p>
+}
+<script type="text/javascript">
+    $(".btnAddBillOrder").click(function () {
+        var billId = $(this).attr("data-billId");
+        var familyName = $(this).attr("data-familyName");
+        var modal = new DayPilot.Modal();
+        modal.top = 120; 
+        var coreProcessId = 0;
+        modal.showUrl("AddBillOrder?billId=" + billId + "&familyName=" + familyName);
+        modal.closed = function() { // callback executed after the dialog is closed
+            if(this.result == "Close") {  
+            }
+            else
+            {
+                $("#BillOrderDisplay").load("@(Url.Action("BillOrderDisplay", "Bill", null, Request.Url.Scheme))?"
+                                     + "BillId=" + "@Model.Id");
+                coreProcessId = this.result;
+				
+            }
+        };
+		
+    });
+
+</script>
+

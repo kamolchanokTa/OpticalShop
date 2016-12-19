@@ -1,0 +1,16 @@
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\OpticalShop.Data.dll.config
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\OpticalShop.Data.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\OpticalShop.Data.pdb
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\EntityFramework.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\OpticalShop.Core.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\System.Data.SQLite.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\OpticalShop.Core.pdb
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\EntityFramework.xml
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\bin\Debug\System.Data.SQLite.xml
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\obj\Debug\OpticalShop.Data.csprojResolveAssemblyReference.cache
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\obj\Debug\OpticalShop.Data.dll
+C:\Users\Miruku\documents\visual studio 2015\Projects\OpticalShop\OpticalShop.Data\obj\Debug\OpticalShop.Data.pdb

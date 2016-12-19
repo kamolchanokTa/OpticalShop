@@ -1,0 +1,80 @@
+-- TABLES INITIALIZATION
+CREATE TABLE IF NOT EXISTS Customer (
+	[Id] TEXT NOT NULL PRIMARY KEY,
+	FirstName TEXT NOT NULL,
+	FamilyName TEXT NOT NULL,
+	DateOfBirth TEXT NULL,
+	[Address] TEXT NULL,
+	Tel TEXT NULL,
+	Mobile TEXT  NULL,
+	Allergy TEXT NULL,
+	LeftSph TEXT NULL,
+	LeftCyl TEXT NULL,
+	LeftAxis TEXT NULL,
+	LeftAdd TEXT NULL,
+	RightSph TEXT NULL,
+	RightCyl TEXT NULL,
+	RightAxis TEXT NULL,
+	RightAdd TEXT NULL,
+	PD TEXT NULL,
+	PH TEXT NULL,
+	Prism TEXT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Product (
+	[Id] TEXT NOT NULL PRIMARY KEY,
+	ProductName TEXT NULL,
+	ProductType TEXT NULL,
+    Brand TEXT NULL,
+    Price DOUBLE NULL,
+    LenseId TEXT NULL,
+    Coating TEXT NULL,
+    Tint TEXT NULL,
+    ProductImage TEXT NULL,
+	Cyl DOUBLE NULL,
+	Sph DOUBLE NULL,
+	[Add] DOUBLE NULL,
+	Axis DOUBLE NULL,
+	Instock INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Lense (
+		[Id] TEXT NOT NULL PRIMARY KEY,
+		ADDMAX DOUBLE NULL,
+		ADDMIN DOUBLE NULL,
+		Category TEXT NULL,
+		Chromatics TEXT NULL,
+		CYLMAX DOUBLE NULL,
+		CYLMIN DOUBLE NULL,
+		FamilyLense TEXT NULL,
+		[Index] Text NULL,
+		Material DOUBLE NULL,
+		Process TEXT NULL,
+		ProductName TEXT NULL,
+		SPHMAX DOUBLE NULL,
+		SPHMIN DOUBLE NULL,
+		[Type] TEXT NULL,
+		ProductType TEXT NULL,
+		Brand TEXT NULL,
+		ProductId TEXT NULL,
+		Price DOUBLE NULL,
+		Instock INT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Bill (
+	[Id]	TEXT NOT NULL,
+	BillingDate	TEXT,
+	BillName	TEXT,
+	Comment	TEXT,
+	TotalPrice	DOUBLE,
+	IsCuttingStockAll TEXt
+);
+CREATE TABLE IF NOT EXISTS BillOrder (
+	[Id]	TEXT NOT NULL,
+	BillId	TEXT NOT NULL,
+	CustomerId	TEXT NOT NULL,
+	ProductId	TEXT,
+	LensId	TEXT,
+	IsCuttingStock	TEXT,
+	Amount	INTEGER NOT NULL,
+	CuttingStockDate	TEXT
+);

@@ -1,0 +1,165 @@
+﻿@model OpticalShop.Models.Customer.FamilyMember
+@{
+    Layout = "~/Views/Shared/RootCustome.cshtml";
+    var successMessages = new List<string>();
+    if (TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+}
+
+<!DOCTYPE html>
+
+<div class="page-content">
+    <h1>Member Profile</h1>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "f" }))
+    {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div>Firt Name</div>
+    <div>@Html.TextBoxFor(model => model.FirstName)</div>
+
+    <div>Family Name</div>
+    <div>@Html.TextBoxFor(model => model.FamilyName)</div>
+
+    <div>Address</div>
+    <div>@Html.TextBoxFor(model => model.Address)</div>
+
+    <div>Tel</div>
+    <div>@Html.TextBoxFor(model => model.Tel)</div>
+
+    <div>Date of Birth</div>
+    <div class="input-control text" data-role="datepicker">
+        @Html.TextBoxFor(model => model.DateOfBirth)
+        <button class="button"><span class="mif-calendar"></span></button>
+    </div>
+    <table>
+        <thead>
+            <tr><th></th><th> Left </th> <th> Right </th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sph</td>
+                <td>@Html.TextBoxFor(model => model.LeftSph)</td>
+                <td>@Html.TextBoxFor(model => model.RightSph)</td>
+            </tr>
+            <tr>
+                <td>Cyl</td>
+                <td>@Html.TextBoxFor(model => model.LeftCyl)</td>
+                <td>@Html.TextBoxFor(model => model.RightCyl)</td>
+            </tr>
+            <tr>
+                <td>Axis</td>
+                <td>@Html.TextBoxFor(model => model.LeftAxis)</td>
+                <td>@Html.TextBoxFor(model => model.RightAxis)</td>
+            </tr>
+            <tr>
+                <td>Add</td>
+                <td>@Html.TextBoxFor(model => model.LeftAdd)</td>
+                <td>@Html.TextBoxFor(model => model.RightAdd)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>Allergy</div>
+    <div>@Html.TextBoxFor(model => model.Allergy)</div>
+
+    <div>Mobile Phone</div>
+    <div>@Html.TextBoxFor(model => model.Mobile)</div>
+
+    <div>Prism</div>
+    <div>@Html.TextBoxFor(model => model.Prism)</div>
+
+    <div>PD</div>
+    <div>@Html.TextBoxFor(model => model.PD)</div>
+
+    <div>PH</div>
+    <div>@Html.TextBoxFor(model => model.PH)</div>
+
+<div class="space">
+    <input type="submit" value="Save" />
+    <input type="button" value="Cancel" onclick="close1();" />
+</div>
+<div class="space">&nbsp;</div>
+   }
+<script type="text/javascript">
+
+		function close(result) {
+            if (parent && parent.DayPilot && parent.DayPilot.ModalStatic) {
+                parent.DayPilot.ModalStatic.close(result);
+            }
+			else
+			{
+				parent.DayPilot.ModalStatic.close(result);
+			}
+        }
+
+		function close1(){
+
+			parent.DayPilot.ModalStatic.close("Close");
+		}
+
+
+
+        $(document).ready(function () {
+            $("#Text").focus();
+			var ALERT_TITLE = "Success";
+			var ALERT_BUTTON_TEXT = "Ok";
+
+if(document.getElementById) {
+	window.alert = function(txt) {
+		createCustomAlert(txt);
+	}
+}
+
+function createCustomAlert(txt) {
+	d = document;
+
+	if(d.getElementById("modalContainer")) return;
+
+	mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
+	mObj.id = "modalContainer";
+	mObj.style.height = d.documentElement.scrollHeight + "px";
+
+	alertObj = mObj.appendChild(d.createElement("div"));
+	alertObj.id = "alertBox";
+	if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+	alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
+	alertObj.style.visiblity="visible";
+
+	h1 = alertObj.appendChild(d.createElement("h1"));
+	h1.appendChild(d.createTextNode(ALERT_TITLE));
+
+	msg = alertObj.appendChild(d.createElement("p"));
+	//msg.appendChild(d.createTextNode(txt));
+	msg.innerHTML = txt;
+
+	btn = alertObj.appendChild(d.createElement("a"));
+	btn.id = "closeBtn";
+	btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+	btn.href = "#";
+	btn.focus();
+	btn.onclick = function() { removeCustomAlert();return false; }
+
+	alertObj.style.display = "block";
+
+}
+
+function removeCustomAlert() {
+	document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
+}
+			if($("#successMsg").length == 0) {
+			}
+			else
+			{
+				alert($("#successMsg").text());
+			}
+        });
+
+</script>  
+</div>

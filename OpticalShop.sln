@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalShop", "OpticalShop\OpticalShop.csproj", "{3A99303B-D1D7-4306-A013-D4238DD433F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalShop.Core", "OpticalShop.Core\OpticalShop.Core.csproj", "{6722B6B5-5461-41E7-9584-23028D697DA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalShop.Data", "OpticalShop.Data\OpticalShop.Data.csproj", "{A7C176A5-7F88-453A-A364-1F99CF44897E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalShop.Service", "OpticalShop.Service\OpticalShop.Service.csproj", "{9487BD1F-F605-4481-8CBF-5DFD2CF1AB59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A99303B-D1D7-4306-A013-D4238DD433F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A99303B-D1D7-4306-A013-D4238DD433F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A99303B-D1D7-4306-A013-D4238DD433F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A99303B-D1D7-4306-A013-D4238DD433F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6722B6B5-5461-41E7-9584-23028D697DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6722B6B5-5461-41E7-9584-23028D697DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6722B6B5-5461-41E7-9584-23028D697DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6722B6B5-5461-41E7-9584-23028D697DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C176A5-7F88-453A-A364-1F99CF44897E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C176A5-7F88-453A-A364-1F99CF44897E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C176A5-7F88-453A-A364-1F99CF44897E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C176A5-7F88-453A-A364-1F99CF44897E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9487BD1F-F605-4481-8CBF-5DFD2CF1AB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9487BD1F-F605-4481-8CBF-5DFD2CF1AB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9487BD1F-F605-4481-8CBF-5DFD2CF1AB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9487BD1F-F605-4481-8CBF-5DFD2CF1AB59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

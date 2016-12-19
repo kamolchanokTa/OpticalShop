@@ -1,0 +1,54 @@
+﻿@model OpticalShop.Models.Customer.FamilyMembers
+@{
+    Layout = "~/Views/Shared/Root.cshtml";
+}
+
+<h2><a href="@Url.Action("AddFamily", "Customer")" data-hint="Go back to previous page" data-hint-position="right" ><i class="arrow-left mif-3x fg-blue"></i></a>  Family : @Model.Family.FamilyName</h2>
+<hr class="thin bg-grayLighter">
+
+<div class="page-content">
+    <div class="flex-grid no-responsive-future" style="height: 100%;">
+        <div class="row" style="height: 100%">
+            <div class="cell auto-size padding20 bg-white" id="cell-content">
+                <hr class="thin bg-grayLighter">
+                <button class="button primary btnAddMember"  data-FamilyName ="@Model.Family.FamilyName" data-Address="@Model.Family.Address" data-Tel="@Model.Family.Tel"><span class="mif-plus"></span> Add Member..</button>
+
+                <div class="control-group column-group gutters" id="FamilyMemberListDetail">
+
+
+                    @Html.Action("FamilyMemberListDetail", "Customer", new
+                               {
+                                   familyName = Model.Family.FamilyName,
+                                   address = Model.Family.Address,
+                                   tel = Model.Family.Tel,
+                               })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".btnAddMember").click(function () {
+        var familyName = $(this).attr("data-FamilyName");
+        var Address = $(this).attr("data-Address");
+        var Tel = $(this).attr("data-Tel");
+        var modal = new DayPilot.Modal();
+        modal.top = 120;
+        modal.showUrl("AddMember?FamilyName=" + familyName + "&Address=" + Address + "&Tel=" + Tel);
+        modal.closed = function () { // callback executed after the dialog is closed
+            if (this.result == "OK") {  // if the
+
+            }
+            if (this.result == "Not Ok") {  // if the
+                alert("Please Identify FamilyName");
+            }
+            if (this.result == "Not Ok1") {  // if the
+                alert("Please insert correct data");
+            }
+            $("#FamilyMemberListDetail").load("@(Url.Action("FamilyMemberListDetail", "Customer", null, Request.Url.Scheme))?"
+                                     + "FamilyName=" + "@Model.Family.FamilyName");
+        };
+    });
+</script>
+
+

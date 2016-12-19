@@ -1,0 +1,88 @@
+﻿@model OpticalShop.Models.Customer.LastNameCustomerListModel
+@{
+    Layout = "~/Views/Shared/Root.cshtml";
+}
+
+<div class="page-content">
+    <div class="flex-grid no-responsive-future" style="height: 100%;">
+        <div class="row" style="height: 100%">
+            <div class="cell auto-size padding20 bg-white" id="cell-content">
+                <h1 class="text-light">Family List<span class="mif-drive-eta place-right"></span></h1>
+                <hr class="thin bg-grayLighter">
+                <button class="button primary" onclick="AddFamily()"><span class="mif-plus"></span> Add Family..</button>
+                <hr class="thin bg-grayLighter">
+                <table class="dataTable border bordered" data-role="datatable" data-auto-width="false">
+                    <thead>
+                        <tr>
+                            <td class="sortable-column">Family Name</td>
+                            <td class="sortable-column">View</td>
+                            <td class="sortable-column" style="width: 20px">Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var lastname in Model.LastName)
+                    {
+                        <tr>
+                            <td>@lastname</td>
+                            <td><span class="btnViewLastName mif-pencil on-left" style="cursor:pointer;" data-Lastname="@lastname" ><a href="@Url.Action("FamilyMemberList", "Customer", new { @familyName = lastname, @address = "", @tel = ""})"> View</a></span></td>
+                            <td><span class="btnRemoveFamily mif-bin on-left" style="cursor:pointer;" data-Lastname="@lastname"><a href="@Url.Action("DeleteFamily", "Customer", new { @familyName = lastname})">Delete</a></span></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function AddFamily()
+    {
+        window.location.href = "@Url.Action("AddFamily", "Customer")";
+    }
+    $(".btnRemoveFamily").click(function () {
+        var Lastname = $(this).attr("data-Lastname");
+        $.Dialog({
+            overlay: true,
+            shadow: true,
+            flat: true,
+            width: 300,
+            padding: 10,
+            title: '',
+            content: '',
+            onShow: function (_dialog) {
+                var html = [
+                    '<div>' +
+                        '<div></div>' +
+                        '<div class="form-actions text-right" style="margin-top:60px" >' + 'Do you want to delete this family' +
+                            '<br/><button class="button primary" style="margin-right:20px" id="btnRemoveConfirm" onclick="$.Dialog.close()">' +
+                              'Confirm' +
+                            '</button>' +
+                                '<button class="button" id="btnRemoveCancel"  onclick="$.Dialog.close()">' +
+                                'Cancel' +
+                            '</button>' +
+                        '</div>' +
+                    '</div>'
+                ].join("");
+                $.Dialog.content(html);
+                $("#btnRemoveConfirm").click(function () {
+                    $.post("@Url.Action("DeleteFamily", "Customer")",
+                          {
+                              familyName: Lastname
+                          },
+                                function (data) {
+                                    if (data.IsSuccess) {
+                                        $("#LastNameCutomerList").load("@(Url.Action("LastNameCutomerList", "Customer"))");
+                                    }
+                                    else {
+                                        PopupAlert("", data.Message);
+                                    }
+                                }
+                          );//post
+                });//btnRemoveConfirm
+            }//function(_dialog)
+        })
+    });
+
+
+</script>

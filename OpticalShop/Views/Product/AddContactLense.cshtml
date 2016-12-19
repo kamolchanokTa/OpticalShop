@@ -1,0 +1,168 @@
+﻿
+@model OpticalShop.Models.Products.ProductModel
+@{
+    Layout = "~/Views/Shared/RootCustome.cshtml";
+    var successMessages = new List<string>();
+    if (TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+}
+<hr class="thin bg-grayLighter">
+
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("AddContactLense", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{@Html.HiddenFor(model => Model.Id)
+    <table>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Brand)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => Model.Brand, Model.Brands)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.BrandText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Price)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Price)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.InStock)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.InStock)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.ProductType)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.ProductType)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.ProductName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.ProductName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Sph)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Sph)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Cyl)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Cyl)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Add)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Add)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Axis)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Axis)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Coating)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Coating)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Tint)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Tint)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.ProductImage)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    <div class="input-control file">
+                        <input type="file" name="Image" id="Image" />
+                        <button class="btn-file">Browse image..</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+    <p style="margin-top: 10px;">
+        <input class="button large primary" type="submit" value="Update" />
+    </p>
+}
+<script type="text/javascript">
+
+    $(function () {
+        $("#Image").change(function () {
+            var data = new FormData();
+            var Imagefile = $("#Image").get(0).files;
+            if (Imagefile.length > 0) {
+                data.append("Image", Imagefile[0]);
+            }
+        });
+    });
+</script>

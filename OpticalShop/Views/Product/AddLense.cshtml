@@ -1,0 +1,203 @@
+﻿
+@model OpticalShop.Models.Products.LenseOverviewModel
+@{
+    Layout = "~/Views/Shared/RootCustome.cshtml";
+    var successMessages = new List<string>();
+    if (TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+}
+<hr class="thin bg-grayLighter">
+
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("AddLense", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        @Html.HiddenFor(model => Model.Lense.LenseId)
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Brand)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.Brand)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Price)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.Price)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.InStock)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.InStock)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.ProductName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.ProductName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Category)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.Lense.Category, Model.Categories)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.CategoryText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Chromatics)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                   @Html.DropDownListFor(model => model.Lense.Chromatics, Model.Chromatics)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.ChromaticsText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.FamilyLense)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.Lense.FamilyLense, Model.FamiliesLense)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.FamilyLenseText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Index)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.Lense.Index, Model.Indexs)
+                    @Html.TextBoxFor(model => Model.Lense.Index)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.IndexText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Process)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.Lense.Process, Model.Process)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.ProcessText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Material)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.Lense.Material, Model.Materials)
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => Model.Lense.MaterialText)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Lense.Type)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.TextBoxFor(model => model.Lense.Type)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SPH</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.SPHMIN)</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.SPHMAX)</td>
+                        </tr>
+                        <tr>
+                            <td>CYL</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.CYLMIN)</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.CYLMAX)</td>
+                        </tr>
+                        <tr>
+                            <td>ADD</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.ADDMIN)</td>
+                            <td> @Html.TextBoxFor(model => model.Lense.ADDMAX)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+    <p style="margin-top: 10px;">
+        <input class="button large primary" type="submit" value="Update" />
+    </p>
+}
+<script type="text/javascript">
+
+
+</script>
+

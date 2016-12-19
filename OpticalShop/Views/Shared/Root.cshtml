@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Optical Shop</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon">
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/bootstrap.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro-responsive.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro-colors.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro-rtl.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro-schemes.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro-icons.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Scripts/MetroUI/metro.min.css")" />
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/Site.css")" />
+    <script src="@Url.Content("~/Content/Scripts/jquery-1.11.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/jquery-ui-1.11.1/jquery-ui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/knockout-3.2.0.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/common.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/metro.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/MetroUI/metro2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/js/jquery.dataTables.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/js/select2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/DayPilot/daypilot-all.min.js")" type="text/javascript"></script>
+</head>
+<body class="metro">
+    <div id="popupConfirm" style="display: none;">
+        <div class="message">
+        </div>
+        <div class="text-center">
+            <button class="okButton button large primary">@("Common.Button.OK")</button>
+            <button class="cancelButton button large">@("Common.Button.Cancel")</button>
+        </div>
+    </div>
+    <div id="popupAlert" style="display: none;">
+        <div class="message">
+        </div>
+        <div class="text-center">
+            <button class="okButton button large primary">@("Common.Button.OK")</button>
+        </div>
+    </div>
+        @Html.Action("Header", "Common")
+    <div class="container">
+        @Html.Partial("_Notifications")
+        @RenderBody()
+    </div>
+        @Html.Action("Footer", "Common")
+</body>
+</html>
+<style>
+        html, body {
+            height: 100%;
+        }
+        body {
+        }
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        .table .input-control.checkbox {
+            line-height: 1;
+            min-height: 0;
+            height: auto;
+        }
+</style>
+<div id="DialogAbout" style="display: none;">
+    <div style="padding: 0px 0px 0px; margin: 20px;">
+        <p>
+            SPC Mapper Version 2.2
+            <br />
+            Copyright 2014 Essilor International
+            <br />
+            All rights reserved.
+        </p>
+    </div>
+</div>
+<script>
+    $("#About").click(function () {
+        var aboutDialog = $("#DialogAbout");
+
+        //Input comment dialog
+        $.Dialog({
+            overlay: true,
+            shadow: true,
+            flat: true,
+            padding: 10,
+            height : 160,
+            title: "About SPC Mapper",
+            content: $(aboutDialog).html(),
+            onShow: function (aboutDialog) {
+
+            }
+        });
+    })
+</script>

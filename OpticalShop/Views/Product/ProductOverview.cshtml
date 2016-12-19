@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/Root.cshtml";
+}
+<div class="tile-area fg-white tile-area-scheme-dark"  style="height: 100%; max-height: 100% !important; width: 100%;">
+    <div class="tile-group double">
+        <span class="tile-group-title">Lense</span>
+        <div class="tile-container">
+            <div class="tile-wide fg-white" data-role="tile">
+                <div class="tile-content">
+                    <div class="carousel" data-role="carousel">
+                        <a href="@Url.Action("Lense", "Product")">
+                            <div class="slide"><img src="~/Content/images/glasses-lenses.jpg" /></div>
+                            <div class="slide"><img src="~/Content/images/lensoptic.jpg" /></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile-group one">
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "Essilor"})"><img src="~/Content/images/essilor-logo-lens.png" /></a>
+                </div>
+            </div>
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "Hoya"})"><img src="~/Content/images/hoya_logo2.jpg" /></a>
+                </div>
+            </div>
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "NST"})"><img src="~/Content/images/Dona.png" /></a>
+                </div>
+            </div>
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "Rodenstock"})"><img src="~/Content/images/Rodenstock_logo.jpg" /></a>
+                </div>
+            </div>
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "Nikon"})"><img src="~/Content/images/1024px-Nikon_logo.png" /></a>
+                </div>
+            </div>
+            <div class="tile-small fg-white" data-role="tile" style="opacity: 1; transform: scale(1); transition: 0.3s;">
+                <div class="tile-content iconic">
+                    <a href="@Url.Action("Lense", "Product", new { @brand = "Kodak"})"><img src="~/Content/images/Kodak.jpg" /></a>
+                </div>
+            </div>
+    </div>
+    <div class="tile-group double">
+        <span class="tile-group-title">Frame</span>
+        <div class="tile-container">
+            <div class="tile-wide fg-white" data-role="tile">
+                <div class="tile-content">
+                    <a href="@Url.Action("Product", "Product", new { @productType = "Frame"})"><img src="~/Content/images/wooden-glasses.jpg" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile-group double">
+        <span class="tile-group-title">Sunglasses</span>
+        <div class="tile-container">
+            <div class="tile-wide fg-white" data-role="tile">
+                <div class="tile-content">
+                    <a href="@Url.Action("Product", "Product", new { @productType = "Sunglasses"})"><img src="~/Content/images/lense.jpg" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile-group double">
+        <span class="tile-group-title">Contact lens</span>
+        <div class="tile-container">
+            <div class="tile-wide fg-white" data-role="tile">
+                <div class="tile-content">
+                    <a href="@Url.Action("ContactLense", "Product", new { @productType = "ContactLense"})"><img src="~/Content/images/contact-lenses.jpg" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile-group double">
+        <span class="tile-group-title">Contact lense Solution</span>
+        <div class="tile-container">
+            <div class="tile-wide fg-white" data-role="tile">
+                <div class="tile-content zooming">
+                    <div class="slide">
+                        <a href="@Url.Action("Product", "Product", new { @productType = "ContactLenSolution"})"> <img src="~/Content/images/clsolution.jpg" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
