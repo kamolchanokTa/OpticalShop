@@ -16,5 +16,13 @@ namespace OpticalShop.Controllers
             model.BillModels = new List<BillModel>();
             return View(model);
         }
+
+        public ActionResult AddBill()
+        {
+            BillModel model = new BillModel();
+            return View(model);
+        }
+
+        public ActionResult 
     }
 }

@@ -1,8 +1,108 @@
 ﻿
+@model OpticalShop.Models.Bill.BillOrderModel
 @{
-    ViewBag.Title = "AddBillOrder";
-    Layout = "~/Views/Shared/Root.cshtml";
+    Layout = "~/Views/Shared/RootCustome.cshtml";
+    var successMessages = new List<string>();
+    if (TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("OpticalShop.notifications.{0}", OpticalShop.Infrastructure.NotifyType.Success)] as IList<string>);
+    }
 }
+<hr class="thin bg-grayLighter">
 
-<h2>AddBillOrder</h2>
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("AddBillOrder", "Bill", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        @Html.HiddenFor(model => Model.Id)
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => model.CustomerName)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => model.CustomerName, Model.CustomersName) 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.ProductCategories)
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => Model.SelectedProductCategory, Model.ProductCategories, new { onChange = "changetextbox();" })
+                </div>
+            </td>
+            <td>
+                <div class="input-control text size2 block">
+                    @Html.DropDownListFor(model => Model.ProductId, Model.ProductsName)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50px">
+                @Html.LabelFor(model => Model.Amount)
+            </td>
+            <td>
+                <div class="input-control text Amount">
+                    @Html.TextBoxFor(model => model.Amount)
+                    <button class="button"><span class="mif-calendar"></span></button>
+                </div>
+            </td>
+        </tr>
+        
 
+    </table>
+    <p style="margin-top: 10px;">
+        <input class="button large primary" type="submit" value="Update" />
+    </p>
+}
+<script type="text/javascript">
+
+
+    $("#Amount").change(function () {
+        var checked = document.getElementById("Amount");
+        //var selectedText = checked.options[checked.selectedIndex].text;
+        var selectedText = $("#Amount option:selected").text();
+        if (selectedText != null) {
+            $("#Amount option:selected").each(function () {
+
+                $.getJSON("@Url.Content("~/Bill/IsAvailable/")", { Amount: $(this).val() }, function (data) {
+                    if (!data) {
+                        document.getElementById("Amount").style.backgroundColor = "red";
+                    }
+                });
+
+            });
+        }
+    });
+    $("#SelectedProductCategory").change(function () {
+        var checked = document.getElementById("SelectedProductCategory");
+        //var selectedText = checked.options[checked.selectedIndex].text;
+        var selectedText = $("#SelectedProductCategory option:selected").text();
+        if (selectedText != null) {
+            $("#SelectedProductCategory option:selected").each(function () {
+
+                $.getJSON("@Url.Content("~/Bill/ProductList/")", { SelectedProductCategory: $(this).val() }, function (data) {
+                    var select = $("#ProductId");
+                    select.empty();
+                    $.each(data, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+
+            });
+        }
+
+    });
+
+
+</script>
